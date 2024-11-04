@@ -1,0 +1,29 @@
+server:
+  port: 9996
+spring:
+  application:
+    name: Notification-Service
+  config:
+    import: optional:configserver:${CONFIG_SERVER_ENDPOINT:http://localhost:9999}
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_ENDPOINT:http://localhost:9999}
+      fail-fast: true
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: notification-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        schema:
+          registry:
+            url: ${KAFKA_SCHEMA_REGISTRY_URL:http://127.0.0.1:8085}
+        specific:
+          avro:
+            reader: true
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: b4ad5614c0fe1f
+    password: 7faa43d61cd232

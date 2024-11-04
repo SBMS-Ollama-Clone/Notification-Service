@@ -1,0 +1,27 @@
+{
+  "type": "record",
+  "name": "ChatDeletedEvent",
+  "namespace": "com.kkimleang.chatservice.event",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "title",
+      "type": "string"
+    },
+    {
+      "name": "username",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "createdAt",
+      "type": "string"
+    }
+  ]
+}
